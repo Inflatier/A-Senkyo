@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>A-Senkyo</title>
+
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+    <div id="resources" class="container" style="display: none;">
+        <div id="panelElement" class="panel panel-default">
+            <div class="panel-heading">
+                <div style="">
+                    <p class="panel-title">
+                        <span class="pollingPlaceName">投票所名</span>
+                    </p>
+                    <p class="panel-title">
+                        <span>該当地区：</span>
+                        <span class="pollingMatchArea">該当地区</span>
+                    </p>
+                </div>
+            </div>
+            <div class="panel-body" style="display: block;">
+            </div>
+        </div>
+    </div>
+	<header class="container">
+		<div class="row">
+			<p class="col-md-4 col-md-offset-4"><img src="images/a-senkyo.png" alt="せんきょロゴ" class="img-responsive center-block" /></p>
+		</div>
+	</header>
+	<section class="container">
+		<!-- Bootstrapのグリッドシステムclass="row"で開始 -->
+		
+
+		<!-- タブの表示 -->
+		<ul class="nav nav-tabs row">
+			<li class="active"><a href="#PollingPlaces" data-toggle="tab">投票所選択</a></li>
+			<li class=""><a href="#menu3" data-toggle="tab">各投票所投票率</a></li>
+			<li class=""><a href="#menu2" data-toggle="tab">政策サーチ</a></li>
+		</ul>
+
+		<!-- タブの本文 -->
+		<div class="tab-content">
+			<div class="tab-pane fade in active" id="PollingPlaces">
+               <div class="container" id="pollingPlaceSearch">
+                   <div class="row col-md-12" style="margin-top: 1em; margin-bottom: 1em;">
+                       <div class="col-sm-10">
+                            <select id="selectRegion" style="width: 24%;">
+                                <option value="横浜市鶴見区">横浜市鶴見区</option>
+                            </select>
+                            <select id="selectRegion" style="width: 24%;">
+                                <option value="横浜市鶴見区">あ</option>
+                                <option value="横浜市鶴見区">い</option>
+                            </select>
+                            <label><input type="number" name="number">丁目</label>
+                            <label><input type="number" name="number">番地</label>
+                            <label><input type="number" name="number">号</label>
+                           <!--<input id="userAddress" type="text" id="tField0" placeholder="町の名前から投票所を検索" style="width: 74%;">-->
+                       </div>
+                       <div class="col-sm-2">
+                            <!--<input name="searchButton" type="button" value="検索" style="width: 100%;" onclick="createPollingPlaceList(document.getElementById('pollingPlacesList'), document.getElementById('userAddress').value)">-->
+                       </div>
+                   </div>
+                </div>
+                <div class="list-group" id="pollingPlacesList">
+
+				</div>
+               <!--
+                
+                
+
+
+
+                <select name="select" class="bsize" id="selBox0" onchange="getSelect(0,this.value)">
+                    <option value="test1" id="placeid"></option>
+                </select>
+                <input name="textfield" type="text" class="textField" style = "width:200px;" id="tField0" placeholder="町名を入力してください">
+                               
+                               　                <input type="button" class="bsize" value="検索" onclick="createPollingPlaceList(listElement, document.getElementById('tField0').value)">
+
+
+
+
+
+
+
+                <ul class="list-group" id="PollingPlacesList" style="overflow-x: hidden;">
+
+				</ul>
+                <div style="position:fixed; bottom:0%; right:0%; width:40%; height:50%;" >
+                    <button onclick="vectorLayer.removeAllFeatures();" style="position: absolute; right:0%; bottom:100%">クリア</button>
+                    <div id="mapdiv" style="width: 100%; height: 100%;"></div>
+                </div>
+                -->
+            </div>
+			<div class="tab-pane fade" id="menu3">
+				<div id="pollingRateBarGraph" style="width: 100%; height: 700px;"></div>
+			</div>
+			<div class="tab-pane fade" id="menu2"style="height:600px">
+               <!--
+                <p style="font-size:20px;">
+                    ***選挙サーチ(<a href="http://seisaku-search.com/">http://seisaku-search.com/</a>)
+                    は別のwebサイトであり、このアプリケーション上で表示を行っています。***
+                </p>
+                <iframe style="width: 100%; height:100%; bottom:0%;" src="http://seisaku-search.com/"></iframe>
+                -->
+            </div>
+		</div>
+
+	</section>
+
+    <div style="position: fixed; width: 70%; height: 40%; "></div>
+
+	<footer style="background-color: #E5E5E5;" class="container">(C) 2015 Team Inflatier</footer>
+
+    
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="setting.js"></script>
+	<script src="js/PollingPlacesJson.js"></script>
+    <script src="js/PollingPlacesList.js"></script>
+    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+	<script src="js/jqPlot/jquery.jqplot.min.js"></script>
+	<script src="js/jqPlot/plugins/jqplot.barRenderer.min.js"></script>
+	<script src="js/jqPlot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+	<script src="js/PollingRateBarGraph.js"></script>
+</body>
+</html>
