@@ -9,7 +9,7 @@ function setTowns() {
     return;
 }
 
-function getSelectedTownName(includeChoume) {
+function getTownName(includeChoume) {
     var town = document.getElementById('selectTown');
     var index = town.selectedIndex;
     var str = town.options.item(index).value;
@@ -30,7 +30,7 @@ function getSelectedTownName(includeChoume) {
 }
 
 function getChou() {
-    var town = getSelectedTownName(true);
+    var town = getTownName(true);
     var choume = (function() {
         var kanjiNum = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
         for (var i = 0; i < 10; i++) {
@@ -60,3 +60,7 @@ function getGou() {
 }
 
 setTowns();
+document.getElementById('SearchButton').onclick = function () {
+    var id = judgeKwkm(getTownName(), getChou(), getBan(), getGou());
+    window.alert(id);
+};
