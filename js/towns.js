@@ -22,7 +22,11 @@ function getBan() {
 
 function getGou() {
     var gou = document.getElementById('gou');
-    return parseInt(gou.value);
+    if (gou.value == "") {
+        return "";
+    } else {
+        return parseInt(gou.value);
+    }
 }
 
 setTowns();
