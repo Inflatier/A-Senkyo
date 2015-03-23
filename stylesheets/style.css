@@ -2,6 +2,19 @@
  * This file provides css styles.
  */
 
-.pollingPlaceAddress {
-    text-indent: 2em;
+.container {
+    width: 96%;
+}
+
+.form-control {
+    display: inline;
+}
+
+#selectTown {
+    display: block;
+    margin: auto auto;
+}
+
+footer {
+    margin-top: 1em;
 }
