@@ -1,4 +1,4 @@
-﻿
+
 var pollingRatesOfEachPlace = (function () {
 	var dataSet = new Array(Object.keys(pollingPlace).length);
 	var i = 0;
@@ -50,7 +50,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	var activated_tab = e.target // activated tab
 	var previous_tab = e.relatedTarget // previous tab
 
-	if (activated_tab.hash == '#menu3') {
+	if (activated_tab.hash == '#Rank') {
 		drawPollngRateBarGraph('pollingRateBarGraph', pollingRatesOfEachPlace);
 	}
 
