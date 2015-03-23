@@ -9,10 +9,40 @@ function setTowns() {
     return;
 }
 
-function getSelectedTownName() {
+function getSelectedTownName(includeChoume) {
     var town = document.getElementById('selectTown');
     var index = town.selectedIndex;
-    return town.options.item(index).value;
+    var str = town.options.item(index).value;
+    if (includeChoume == true) {
+        return str;
+    } else {
+        var kanjiNum = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
+        for (var i = 0; i < 10; i++) {
+            var match = kanjiNum[i] + '丁目';
+            var result = str.lastIndexOf(match);
+            if (result > -1) {
+                str = str.replace(match, "");
+                return str;
+            }
+        }
+        return str;
+    }
+}
+
+function getChou() {
+    var town = getSelectedTownName(true);
+    var choume = (function() {
+        var kanjiNum = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
+        for (var i = 0; i < 10; i++) {
+            var match = kanjiNum[i] + '丁目';
+            var result = town.lastIndexOf(match);
+            if (result > -1) {
+                return i + 1;
+            }
+        }
+        return null;
+    })();
+    return choume;
 }
 
 function getBan() {
