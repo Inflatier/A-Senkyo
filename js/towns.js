@@ -42,12 +42,17 @@ function getChou() {
         }
         return null;
     })();
+    
     return choume;
 }
 
 function getBan() {
     var ban = document.getElementById('ban');
-    return parseInt(ban.value);
+    if (ban.value == '') {
+        return '';
+    } else {
+        return parseInt(ban.value);
+    }
 }
 
 function getGou() {

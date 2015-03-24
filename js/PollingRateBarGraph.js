@@ -1,5 +1,6 @@
 
 var pollingRatesOfEachPlace = (function () {
+    var pollingPlace = getPollingPlace();
 	var dataSet = new Array(Object.keys(pollingPlace).length);
 	var i = 0;
 	for (var jsonKey in pollingPlace) {
