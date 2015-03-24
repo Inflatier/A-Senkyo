@@ -84,11 +84,6 @@ function getPollingPlace(id) {
     if (id == 0) {
         return null;
     }
-    /*
-    if (loaded == false) {
-        return {};
-    }
-    */
     var obj = pollingPlaceList['http://linkdata.org/resource/rdf1s3099i#' + id];
     var poll = {
         id: obj['http://linkdata.org/property/rdf1s3099i#%E6%8A%95%E7%A5%A8%E5%8C%BA'][0].value,
@@ -101,7 +96,21 @@ function getPollingPlace(id) {
     return poll;
 }
 
-function checkInput() {
+//完全な住所を返します。町名(丁目)番-号という形式の文字列を返します。
+function getFullAddress() {
+    var address = "";
+    var town = getTownName(true);
+    var ban = getBan();
+    var gou = getGou();
+    if (gou == null || gou == NaN) {
+        gou = "";
+    }
+    address = town + ban + '-' + gou;
+    return address;
+}
+
+//入力が正しいかどうかをBool値で返します。番/番地が1以上の整数でないときfalseを、それ以外のときはtrueを返します。
+function isInputCorrect(func) {
     var name = getTownName();
     var chou = getChou();
     var ban = getBan();
@@ -118,28 +127,23 @@ function checkInput() {
             .removeClass('panel-info')
             .addClass('panel-danger');
         document.getElementById('info').innerHTML = err;
-        return;
+        return false;
     } else {
         $(document.getElementById('info').parentNode)
             .removeClass('panel-danger')
             .addClass('panel-info');
         document.getElementById('info').innerHTML = '住所を入力してください。';
+        return true;
     }
-    var id = judgeKwkm(getTownName(), getChou(), getBan(), getGou());
-    window.alert(getPollingPlace(id).name);
-    console.log(getPollingPlace(id));
 }
 
 setTowns();
 document.getElementById('SearchButton').onclick = function () {
-    checkInput();
+    if (isInputCorrect() == true) {
+        //judgeKwkmで投票所のidが返る
+        //getPollingPlaceでそのidの投票所オブジェクトが返る
+        var pollingPlaceData = getPollingPlace(judgeKwkm(getTownName(), getChou(), getBan(), getGou()));
+        window.alert(pollingPlaceData.name);
+        console.log(pollingPlaceData);
+    }
 };
-
-/*
-var pollingPlaceList;
-var loaded = true;
-$.getJSON('../data/tsuzukiku_senkyoku_rdf.json', function(data) {
-    pollingPlaceList = data;
-    loaded = true;
-});
-*/
