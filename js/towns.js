@@ -140,9 +140,22 @@ function isInputCorrect(func) {
 setTowns();
 document.getElementById('SearchButton').onclick = function () {
     if (isInputCorrect() == true) {
-        //judgeKwkmで投票所のidが返る
-        //getPollingPlaceでそのidの投票所オブジェクトが返る
+        /*
+        {
+            id: 投票所のID
+            name: 投票所の名称
+            place: 投票所の所在地
+            lat: 投票所の緯度
+            long: 投票所の軽度
+            match: 投票所の該当地区
+        }
+        */
+        //投票所のデータ。内容は上の通り。
         var pollingPlaceData = getPollingPlace(judgeKwkm(getTownName(), getChou(), getBan(), getGou()));
+        
+        //ユーザーの入力した住所。勝田南二丁目11-17の形で出力される。
+        var userAddress = getFullAddress();
+        
         window.alert(pollingPlaceData.name);
         console.log(pollingPlaceData);
     }
