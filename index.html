@@ -40,17 +40,19 @@
 		<div class="tab-content">
 			<div class="tab-pane fade in active" id="Search">
                 <div class="row">
-                    <div class="col-xs-12 col-md-12 please">住所を入力してください</div>
+                    <div class="col-xs-12 col-md-12 panel panel-info">
+                        <div class="panel-heading" id="info">住所を入力してください</div>
+                    </div>
                     <div class="col-xs-12 col-md-3 form-group">
                         <select class="col-xs-12 selectpicker" id="selectTown">
                         </select>
                     </div>
                     <div class="col-xs-12 col-md-3 form-group">
-                        <input style="width: 75%;" class="form-control input-lg" type="number" id="ban" />
+                        <input style="width: 75%;" class="form-control input-lg" type="number" id="ban" placeholder="番もしくは番地" min="1" />
                         <label style="width: 20%;">番/番地</label>
                     </div>
                     <div class="col-xs-12 col-md-3 form-group">
-                        <input style="width: 75%;" class="form-control input-lg" type="number" id="gou" placeholder="" />
+                        <input style="width: 75%;" class="form-control input-lg" type="number" id="gou" placeholder="号(ある場合のみ)" min="1" />
                         <label style="width: 20%">号</label>
                     </div>
                     <button class="col-xs-12 col-md-3 btn btn-primary" id="SearchButton">投票所を調べる</button>

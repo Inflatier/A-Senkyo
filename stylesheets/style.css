@@ -10,9 +10,9 @@
     display: inline;
 }
 
-.please {
-    text-align: center;
-    margin: 1em auto;
+.panel {
+    margin-top: 0.5em;
+    padding: 0;
 }
 
 #selectTown {
