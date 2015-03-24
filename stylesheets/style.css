@@ -10,6 +10,11 @@
     display: inline;
 }
 
+.please {
+    text-align: center;
+    margin: 1em auto;
+}
+
 #selectTown {
     display: block;
     margin: auto auto;
