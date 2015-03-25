@@ -84,7 +84,7 @@ function getPollingPlace(id) {
     if (id == 0) {
         return null;
     }
-    var obj = pollingPlaceList['http://linkdata.org/resource/rdf1s3099i#' + id];
+    var obj = getPollingPlaceList()['http://linkdata.org/resource/rdf1s3099i#' + id];
     var poll = {
         id: obj['http://linkdata.org/property/rdf1s3099i#%E6%8A%95%E7%A5%A8%E5%8C%BA'][0].value,
         name: obj['http://linkdata.org/property/rdf1s3099i#%E6%8A%95%E7%A5%A8%E6%89%80'][0].value,
@@ -138,7 +138,9 @@ function isInputCorrect(func) {
 }
 
 setTowns();
+//投票所を検索するボタン
 document.getElementById('SearchButton').onclick = function () {
+    //入力が正当な場合
     if (isInputCorrect() == true) {
         /*
         {
@@ -151,12 +153,40 @@ document.getElementById('SearchButton').onclick = function () {
         }
         */
         //投票所のデータ。内容は上の通り。
-        var pollingPlaceData = getPollingPlace(judgeKwkm(getTownName(), getChou(), getBan(), getGou()));
+        var data = getPollingPlace(judgeKwkm(getTownName(), getChou(), getBan(), getGou()));
         
         //ユーザーの入力した住所。勝田南二丁目11-17の形で出力される。
         var userAddress = getFullAddress();
         
-        window.alert(pollingPlaceData.name);
-        console.log(pollingPlaceData);
+        $('#popup-place').html('No. ' + data.id + ' : ' + data.name);
+        //地図を表示するボタン
+        document.getElementById('popup-mapbutton').onclick = function() {
+            var uri = "http://maps.google.com/maps?saddr=横浜市都筑区"
+                + userAddress
+                + "&daddr="
+                + data.lat
+                + ","
+                + data.long;
+            window.location.href = uri;
+        }
+        
+        //ポップアップを出すアニメーション
+        $('#popup-shadow')
+        .css({
+            'display': 'block',
+            'opacity': '0.00'
+        })
+        .animate({'opacity': '1.00'}, 300);
     }
+};
+
+//閉じるボタンの挙動
+document.getElementById('popup-closebutton').onclick = function() {
+    $('#popup-shadow')
+    .animate({'opacity': '0.00'}, 300, function() {
+        $(this).css({
+            'opacity': '0.00',
+            'display': 'none'
+        });
+    });
 };

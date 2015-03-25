@@ -2,6 +2,11 @@
  * This file provides css styles.
  */
 
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
 .container {
     width: 96%;
 }
@@ -18,6 +23,55 @@
 #selectTown {
     display: block;
     margin: auto auto;
+}
+
+#popup-shadow {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#popup-dialog {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 90%;
+    height: 30%;
+    /*
+    background: #BAEEFF;
+    border-radius: 10px;
+    */
+}
+
+#popup-title {
+    margin: 0;
+    width: 100%;
+	text-align:center;
+	padding: 0.3em;
+    font-size: 2em;
+    /*
+    border-bottom:1px solid black;
+    background: #7ECAFF;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    */
+}
+
+#popup-content {
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    overflow: auto;
+}
+
+#popup-place {
+    font-size: 1.5em;
 }
 
 footer {

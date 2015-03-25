@@ -1,3 +1,9 @@
+/*
+    (C) 2015 Team Inflatier
+    小学生並みのスクリプト
+*/
+
+
 function judgeKwkm(town,chou,ban,gou){
     var id = 0;
 
